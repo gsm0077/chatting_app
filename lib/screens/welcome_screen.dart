@@ -1,16 +1,19 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:chatty/screens/login_screen.dart';
 import 'package:chatty/screens/registration_screen.dart';
-import 'package:flutter/material.dart';
-import '../constants.dart';
-import '../components/similar.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+
+import '../components/similar.dart';
+import '../constants.dart';
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = '/Welcome-screen';
+
+  const WelcomeScreen({super.key});
 
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
@@ -122,10 +125,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         children: <Widget>[
                           Hero(
                             tag: 'logo',
-                            child: Container(
-                              child: Image.asset('images/logo.png'),
-                              // height: animation!.value * 60,
+                            child: SizedBox(
                               height: animation.value * 60,
+                              child: Image.asset('images/logo.png'),
                             ),
                           ),
                           Flexible(

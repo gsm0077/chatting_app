@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:chatty/constants.dart';
 
 class ImageViewFull extends StatefulWidget {
   String? value;

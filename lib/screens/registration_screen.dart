@@ -1,14 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
 import '../components/similar.dart';
 import '../constants.dart';
-import 'login_screen.dart';
 import 'chat_screen.dart';
+import 'login_screen.dart';
 import 'welcome_screen.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = '/register';
+
+  const RegistrationScreen({super.key});
   @override
   _RegistrationScreenState createState() => _RegistrationScreenState();
 }
@@ -130,14 +133,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       final newUser =
                           await _auth.createUserWithEmailAndPassword(
                               email: email!, password: password!);
-                      if (newUser != null) {
-                        setState(() {
-                          _status = false;
-                        });
-                        Navigator.pushNamed(context, ChatScreen.id);
-                      } else {
-                        print('not connected');
-                      }
+                      setState(() {
+                        _status = false;
+                      });
+                      Navigator.pushNamed(context, ChatScreen.id);
                     } catch (e) {
                       setState(() {
                         _status = false;

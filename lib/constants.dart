@@ -16,7 +16,7 @@ const kSendButtonTextStyle = TextStyle(
 );
 
 const kDialoguebuttonStyle =
-    ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.red));
+    ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.red));
 
 const kMessageTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),

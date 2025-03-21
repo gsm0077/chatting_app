@@ -1,16 +1,16 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-import 'package:chatty/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'login_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:image_picker/image_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'imageview_screen.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:chatty/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'imageview_screen.dart';
+import 'login_screen.dart';
 
 User? loggedinUser;
 final _auth = FirebaseAuth.instance;
@@ -23,6 +23,8 @@ String? audioUrl;
 
 class ChatScreen extends StatefulWidget {
   static String id = 'chatscreen';
+
+  const ChatScreen({super.key});
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -294,8 +296,6 @@ void takeImageFromgallery() async {
   XFile? file = await content.pickImage(source: ImageSource.gallery);
   print(file!.path);
 
-  if (file.path == null) return;
-
   String unquieIdreference = DateTime.now().microsecondsSinceEpoch.toString();
 
   Reference refDirImages = firebaseStorageref.child('images');
@@ -303,7 +303,7 @@ void takeImageFromgallery() async {
   Reference refimagetoBEstored = refDirImages.child(unquieIdreference);
 
   try {
-    await refimagetoBEstored.putFile(File(file!.path));
+    await refimagetoBEstored.putFile(File(file.path));
 
     imageUrl = await refimagetoBEstored.getDownloadURL();
 
@@ -325,8 +325,6 @@ void takeImageandUpload() async {
 
   print(file!.path);
 
-  if (file!.path == null) return;
-
   String unquieIdreference = DateTime.now().microsecondsSinceEpoch.toString();
 
   Reference refDirImages = firebaseStorageref.child('images');
@@ -334,7 +332,7 @@ void takeImageandUpload() async {
   Reference refimagetoBEstored = refDirImages.child(unquieIdreference);
 
   try {
-    await refimagetoBEstored.putFile(File(file!.path));
+    await refimagetoBEstored.putFile(File(file.path));
 
     imageUrl = await refimagetoBEstored.getDownloadURL();
 
@@ -366,7 +364,7 @@ class StreamSetter extends StatelessWidget {
             final messageSender = message.data()['sender'];
             final messageTime = message.get('time');
             final senderEmail = loggedinUser!.email;
-            final urlTxt;
+            final String urlTxt;
             messageText.toString().split('%')[0] == "${kFirebaseUrl}images"
                 ? urlTxt = 'images'
                 : messageText.toString().split('%')[0] ==
@@ -404,7 +402,8 @@ class StreamSetter extends StatelessWidget {
 
 class messageBubble extends StatefulWidget {
   messageBubble(
-      {required this.message,
+      {super.key,
+      required this.message,
       required this.sender,
       required this.isME,
       required this.isImage,

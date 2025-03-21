@@ -1,17 +1,19 @@
 import 'package:chatty/screens/welcome_screen.dart';
-import 'package:flutter/material.dart';
-import '../constants.dart';
-import '../components/similar.dart';
-import 'registration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'chat_screen.dart';
-import 'package:flutter_progress_hud/flutter_progress_hud.dart';
+import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
+import '../components/similar.dart';
+import '../constants.dart';
+import 'chat_screen.dart';
+import 'registration_screen.dart';
 
 final _auth = FirebaseAuth.instance;
 
 class LoginScreen extends StatefulWidget {
   static String id = '/login';
+
+  const LoginScreen({super.key});
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -33,12 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       final dataofUser = await _auth.signInWithEmailAndPassword(
           email: email!, password: password!);
-      if (dataofUser != null) {
-        setState(() {
-          _status = false;
-        });
-        Navigator.pushNamed(content, ChatScreen.id);
-      }
+      setState(() {
+        _status = false;
+      });
+      Navigator.pushNamed(content, ChatScreen.id);
     } catch (e) {
       setState(() {
         _status = false;
@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Flexible(
                 child: Hero(
                   tag: 'logo',
-                  child: Container(
+                  child: SizedBox(
                     height: 200.0,
                     child: Image.asset('images/logo.png'),
                   ),

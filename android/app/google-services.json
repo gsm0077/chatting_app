@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "993288894998",
-    "project_id": "chatify-548e8",
-    "storage_bucket": "chatify-548e8.appspot.com"
+    "project_number": "97423231459",
+    "project_id": "chattingapp-b3e02",
+    "storage_bucket": "chattingapp-b3e02.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:993288894998:android:434effeaf3ce495b7e5337",
+        "mobilesdk_app_id": "1:97423231459:android:438a7fcb0d0cfcdd58f8d6",
         "android_client_info": {
-          "package_name": "co.gsmtechno.chatty"
+          "package_name": "com.example.chatty"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "993288894998-igodgl9bem5qgk379u0fe9tkc6unfht4.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA_AQa4K8ea4V2nyzL0q113YAbkZ_0co44"
+          "current_key": "AIzaSyB7-IDqk0c1OTdeGw2PaXPslt-eIE6qDOM"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "993288894998-igodgl9bem5qgk379u0fe9tkc6unfht4.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
